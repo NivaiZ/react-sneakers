@@ -1,6 +1,25 @@
 function App() {
   return (
     <div className="wrapper">
+
+      <aside className="overlay">
+        <div className="sidebar">
+          <h2 className="sidebar__heading">Корзина</h2>
+          <ul className="sidebar__list">
+            <li className="sidebar__item">
+              <img className="sidebar__picture" width={70} height={70} src="/img/sneakers/sneakers__1.png" />
+              <div className="sidebar__box">
+                <p className="sidebar__description">Мужские Кроссовки Nike Air Max 270</p>
+                <strong className="sidebar__price">12 999 руб.</strong>
+              </div>
+              <button className="sidebar__button" type="button">
+                <img src="/img/btn__remove.svg" />
+              </button>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
       <header className="header">
         <div className="header__box">
           <img width={40} height={40} src="/img/logo.png" />
@@ -27,9 +46,18 @@ function App() {
         </ul>
       </header>
       <section className="showcase">
-        <h1 className="showcase__heading">Все кроссовки</h1>
+        <div className="showcase__inner">
+          <h1 className="showcase__heading search">Все кроссовки</h1>
+          <div className="search__block">
+            <img src="/img/search.svg" alt="search" />
+            <input className="search__input" placeholder="Поиск..." />
+          </div>
+        </div>
         <ul className="cart">
           <li className="cart__item">
+            <button className="cart__block" type="button">
+              <img src="/img/btn__add.svg" />
+            </button>
             <img width={133} height={112} src="/img/sneakers/sneakers__1.png" />
             <p className="cart__description">
               Мужские Кроссовки Nike Blazer Mid Suede
