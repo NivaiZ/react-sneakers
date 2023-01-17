@@ -1,6 +1,24 @@
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+
+const arrayCard = [
+  {
+    title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, imageUrl: '/img/sneakers/sneakers__1.png'
+  },
+  {
+    title: 'Мужские Кроссовки Nike Air Max 270', price: 13999, imageUrl: '/img/sneakers/sneakers__2.png'
+  },
+  {
+    title: 'Мужские Кроссовки Nike Air Max 270', price: 8499, imageUrl: '/img/sneakers/sneakers__3.png'
+  },
+  {
+    title: 'Мужские Кроссовки Nike Air Max 270', price: 8999, imageUrl: '/img/sneakers/sneakers__4.png'
+  },
+
+
+]
+
 function App() {
   return (
     <div className="wrapper">
@@ -18,7 +36,14 @@ function App() {
         </div>
 
         <ul className="card">
-          <Card />
+          {arrayCard.map((obj) => (
+            <Card
+              title={obj.title}
+              price={obj.price}
+              imageUrl={obj.imageUrl}
+              onClick={() => console.log(obj)}
+            />
+          ))}
         </ul>
       </section>
     </div>
