@@ -1,10 +1,10 @@
-function Sidebar() {
+function Sidebar(props) {
     return (
-        <aside style={{ display: 'none' }} className="overlay">
+        <aside className="overlay">
 
             <div className="sidebar">
                 <h2 className="sidebar__heading">Корзина
-                    <button className="sidebar__button" type="button">
+                    <button  onClick={props.onClose} className="sidebar__button" type="button">
                         <img src="/img/btn__remove.svg" />
                     </button>
                 </h2>

@@ -1,30 +1,26 @@
+import React from "react";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 
-const arrayCard = [
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, imageUrl: '/img/sneakers/sneakers__1.png'
-  },
-  {
-    title: 'Мужские Кроссовки Nike Air Max 270', price: 13999, imageUrl: '/img/sneakers/sneakers__2.png'
-  },
-  {
-    title: 'Мужские Кроссовки Nike Air Max 270', price: 8499, imageUrl: '/img/sneakers/sneakers__3.png'
-  },
-  {
-    title: 'Мужские Кроссовки Nike Air Max 270', price: 8999, imageUrl: '/img/sneakers/sneakers__4.png'
-  },
-
-
-]
-
 function App() {
+  const [items, setItems] = React.useState([])
+  const [cartOpened, setCartOpened] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch('https://63c7fee35c0760f69ac2d96a.mockapi.io/items')
+    .then((res) => {
+      return res.json()
+    })
+    .then((json) => {
+      setItems(json);
+    })
+  }, [])
   return (
     <div className="wrapper">
 
-      <Sidebar />
-      <Header />
+      {cartOpened && <Sidebar onClose={() => { setCartOpened(false) }} />}
+      <Header onClickCart={() => setCartOpened(true)} />
 
       <section className="showcase">
         <div className="showcase__inner">
@@ -36,12 +32,13 @@ function App() {
         </div>
 
         <ul className="card">
-          {arrayCard.map((obj) => (
+          {items.map((obj) => (
             <Card
               title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
-              onClick={() => console.log(obj)}
+              onAddToFavorite={() => console.log('Добавили в закладки')}
+              OnAddToCard={() => console.log('Нажали на плюс')}
             />
           ))}
         </ul>
