@@ -53,6 +53,17 @@
   text-transform: uppercase;
 }
 
+.header__logo {
+  display: block;
+  text-decoration: none;
+}
+
+.header__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .header__description {
   margin: 0;
   font-weight: 400;
