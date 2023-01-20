@@ -6,7 +6,7 @@ function Home({
     setSearchValue,
     onChangeSearchInput,
     onAddToFavorite,
-    onAddtoCardHandler}) {
+    onAddtoCardHandler }) {
     return (
         <section className="showcase">
             <div className="showcase__inner">
@@ -29,7 +29,7 @@ function Home({
                             price={item.price}
                             imageUrl={item.imageUrl}
                             onAddToFavorite={(obj) => onAddToFavorite(obj)}
-                            OnAddToCard={(obj) => { onAddtoCardHandler(obj); }}
+                            OnAddToCard={(obj) => onAddtoCardHandler(obj)}
                         />
                     ))}
             </ul>

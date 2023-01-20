@@ -49,10 +49,10 @@ function App() {
       {cartOpened && <Sidebar items={cartItems} onClose={() => { setCartOpened(false) }} onRemove={onRemoveCart} />}
 
       <Header onClickCart={() => setCartOpened(true)} />
-      
+
       <Routes>
-        <Route path="/" element={<Home items={items} searchValue={searchValue} setSearchValue={setSearchValue} onChangeSearchInput={onChangeSearchInput} onAddToFavorite={onAddToFavorite} onAddtoCardHandler={onAddtoCardHandler} />}></Route>
-        <Route path="/favorites" items={favorites} element={<Favorites />}></Route>
+        <Route path="/" element={<Home items={items} searchValue={searchValue} setSearchValue={setSearchValue} onChangeSearchInput={onChangeSearchInput} onAddToFavorite={onAddToFavorite} onAddtoCardHandler={onAddtoCardHandler} />}/>
+        <Route path="/favorites" element={<Favorites items={favorites} onAddToFavorite={onAddToFavorite}/>}/>
       </Routes>
 
     </div>

@@ -250,3 +250,9 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.showcase__inner--favorite {
+  flex-direction: column;
+  justify-content: unset;
+  align-items: unset;
+}
