@@ -1,8 +1,7 @@
 import cardStyles from "./Card.module.scss";
 import React from "react";
 
-function Card({ OnAddToCard, onAddToFavorite, imageUrl, title, price, favorited = false }) {
-  console.log(favorited);
+function Card({ id, OnAddToCard, onFavorite, imageUrl, title, price, favorited = false }) {
   const [isAdded, setIsAdded] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
 
@@ -12,7 +11,7 @@ function Card({ OnAddToCard, onAddToFavorite, imageUrl, title, price, favorited 
   }
 
   const onClickFavorite = () => {
-    onAddToFavorite({ title, imageUrl, price });
+    onFavorite({ id, title, imageUrl, price });
     setIsFavorite(!isFavorite)
   }
 
@@ -22,7 +21,7 @@ function Card({ OnAddToCard, onAddToFavorite, imageUrl, title, price, favorited 
   return (
     <li className={cardStyles.card__item}>
       <button className={cardStyles.card__block} type="button" onClick={onClickFavorite}>
-        <img src={isFavorite ? '/img/favorite__disabled.svg' : '/img/favorite__active.svg'} />
+        <img src={isFavorite ? '/img/favorite__active.svg' : '/img/favorite__disabled.svg'} />
       </button>
       <img width={133} height={112} src={imageUrl} />
       <p className={cardStyles.card__description}>{title}</p>

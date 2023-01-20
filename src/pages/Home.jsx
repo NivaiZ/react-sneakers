@@ -25,11 +25,9 @@ function Home({
                     .map((item, index) => (
                         <Card
                             key={index}
-                            title={item.title}
-                            price={item.price}
-                            imageUrl={item.imageUrl}
-                            onAddToFavorite={(obj) => onAddToFavorite(obj)}
+                            onFavorite={(obj) => onAddToFavorite(obj)}
                             OnAddToCard={(obj) => onAddtoCardHandler(obj)}
+                            {...item}
                         />
                     ))}
             </ul>
