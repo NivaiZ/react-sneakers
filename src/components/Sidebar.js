@@ -12,7 +12,7 @@ function Sidebar({ onClose, onRemove, items = [] }) {
                 {items.length > 0 ? <ul className="sidebar__list sidebar__list--stretching">
 
                     {items.map((obj) => (
-                        <li className="sidebar__item">
+                        <li key={obj.id} className="sidebar__item">
                             <img className="sidebar__picture" width={70} height={70} src={`${obj.imageUrl}`} />
                             <div className="sidebar__box">
                                 <p className="sidebar__description">{obj.title}</p>

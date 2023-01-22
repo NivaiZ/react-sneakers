@@ -11,10 +11,10 @@ body {
 *::after {
   box-sizing: border-box;
 }
-
 .card {
   display: flex;
   flex-wrap: wrap;
+  row-gap: 40px;
 }
 
 .wrapper {

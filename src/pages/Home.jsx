@@ -1,12 +1,35 @@
 import Card from "../components/Card";
+import appContext from "../components/contex";
+import React from "react";
 
 function Home({
     items,
     searchValue,
     setSearchValue,
+    isLoading,
     onChangeSearchInput,
     onAddToFavorite,
     onAddtoCardHandler }) {
+
+    const { isItemAdded } = React.useContext(appContext);
+
+    const renderItems = () => {
+        const filtredItems = items.filter((item) =>
+            item.title.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        return (isLoading ? [...Array(10)] : filtredItems).map((item, index) => (
+            <Card
+                key={index}
+                onFavorite={(obj) => onAddToFavorite(obj)}
+                onAddToCard={(obj) => onAddtoCardHandler(obj)}
+                added={isItemAdded(item && item.id)}
+                loading={isLoading}
+                {...item}
+            />
+        ))
+    }
+
+
     return (
         <section className="showcase">
             <div className="showcase__inner">
@@ -21,15 +44,7 @@ function Home({
             </div>
 
             <ul className="card">
-                {items.filter((item) => item.title.toLowerCase().includes(searchValue))
-                    .map((item, index) => (
-                        <Card
-                            key={index}
-                            onFavorite={(obj) => onAddToFavorite(obj)}
-                            OnAddToCard={(obj) => onAddtoCardHandler(obj)}
-                            {...item}
-                        />
-                    ))}
+                {renderItems()}
             </ul>
         </section>
     )
