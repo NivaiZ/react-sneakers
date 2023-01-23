@@ -11,6 +11,7 @@ body {
 *::after {
   box-sizing: border-box;
 }
+
 .card {
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +25,6 @@ body {
   max-width: 1080px;
   margin: 50px auto;
   padding: 10px 40px 10px 40px;
-  overflow: auto;
 }
 
 .search__block {
@@ -63,11 +63,11 @@ body {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100vw;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
@@ -196,9 +196,17 @@ body {
     right: 38px;
     transition: transform 0.2s ease-in-out;
   }
+
+  &:disabled {
+    animation: button-loading 0.6s ease-in-out infinite;
+    background-color: #bebebe;
+  }
 }
 
 .sidebar__list--stretching {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 1;
 }
 
@@ -255,4 +263,18 @@ body {
   flex-direction: column;
   justify-content: unset;
   align-items: unset;
+}
+
+@keyframes button-loading {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

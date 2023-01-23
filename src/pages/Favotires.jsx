@@ -11,11 +11,7 @@ function Favorites() {
                 <h1 className="showcase__inner">Мои закладки</h1>
                 <ul className="card">
                     {favorites.map((item, index) => (
-                        <Card
-                            key={index}
-                            favorited={true}
-                            onFavorite={onAddToFavorite}
-                            {...item}
+                        <Card key={index} favorited={true} onFavorite={onAddToFavorite} {...item}
                         />
                     ))}
                 </ul>
@@ -25,4 +21,5 @@ function Favorites() {
         </section>
     )
 }
+
 export default Favorites;

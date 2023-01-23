@@ -1,5 +1,4 @@
 import Card from "../components/Card";
-import appContext from "../components/contex";
 import React from "react";
 
 function Home({
@@ -10,9 +9,6 @@ function Home({
     onChangeSearchInput,
     onAddToFavorite,
     onAddtoCardHandler }) {
-
-    const { isItemAdded } = React.useContext(appContext);
-
     const renderItems = () => {
         const filtredItems = items.filter((item) =>
             item.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -22,7 +18,6 @@ function Home({
                 key={index}
                 onFavorite={(obj) => onAddToFavorite(obj)}
                 onAddToCard={(obj) => onAddtoCardHandler(obj)}
-                added={isItemAdded(item && item.id)}
                 loading={isLoading}
                 {...item}
             />
@@ -43,10 +38,10 @@ function Home({
                 </div>
             </div>
 
-            <ul className="card">
-                {renderItems()}
-            </ul>
+            <ul className="card">{renderItems()}</ul>
         </section>
     )
 }
+
+
 export default Home

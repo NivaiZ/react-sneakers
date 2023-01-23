@@ -46,9 +46,9 @@ function App() {
     console.log(obj);
     try {
       if (favorites.find((favObj) => Number(favObj.id) === Number(obj.id))) {
-        axios.delete(`https://63c93f94c3e2021b2d52f97e.mockapi.io/favorites/${obj.id}`)
+        axios.delete(`https://63c93f94c3e2021b2d52f97e.mockapi.io/favorites/${obj.id}`);
       } else {
-        const { data } = await axios.post('https://63c93f94c3e2021b2d52f97e.mockapi.io/favorites', obj)
+        const { data } = await axios.post('https://63c93f94c3e2021b2d52f97e.mockapi.io/favorites', obj);
         setFavorites((prev) => [...prev, data])
       }
     } catch (error) {
@@ -65,20 +65,37 @@ function App() {
     axios.delete(`https://63c7fee35c0760f69ac2d96a.mockapi.io/cart/${id}`);
     setCardItems((prev) => prev.filter((item) => item.id !== id))
   }
+  
   const isItemAdded = (id) => {
     return cartItems.some((obj) => Number(obj.id) === Number(id))
   }
 
   return (
-    <appContext.Provider value={{ items, cartItems, favorites, isItemAdded, onAddToFavorite }}>
+    <appContext.Provider value={{ 
+      items, 
+      cartItems, 
+      favorites, 
+      isItemAdded, 
+      onAddToFavorite, 
+      setCartOpened, 
+      setCardItems }}>
       <div className="wrapper">
 
-        {cartOpened && <Sidebar items={cartItems} onClose={() => { setCartOpened(false) }} onRemove={onRemoveCart} />}
-
+        {cartOpened && (<Sidebar items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveCart} />)}
         <Header onClickCart={() => setCartOpened(true)} />
 
         <Routes>
-          <Route path="/" element={<Home items={items} searchValue={searchValue} setSearchValue={setSearchValue} onChangeSearchInput={onChangeSearchInput} onAddToFavorite={onAddToFavorite} cartItems={cartItems} isLoading={isLoading} onAddtoCardHandler={onAddtoCardHandler} />} />
+          <Route path="/" 
+          element={<Home 
+          items={items} 
+          searchValue={searchValue} 
+          setSearchValue={setSearchValue} 
+          onChangeSearchInput={onChangeSearchInput} 
+          onAddToFavorite={onAddToFavorite} 
+          cartItems={cartItems} 
+          isLoading={isLoading} 
+          onAddtoCardHandler={onAddtoCardHandler} />} />
+
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
 

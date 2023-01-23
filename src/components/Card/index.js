@@ -3,17 +3,18 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import appContext from "../contex";
 
-function Card({ 
-  id, 
-  onAddToCard, 
-  onFavorite, 
-  imageUrl, 
-  title, 
-  price, 
-  favorited = false, 
-  loading = false }) {
+function Card({
+  id,
+  onAddToCard,
+  onFavorite,
+  imageUrl,
+  title,
+  price,
+  favorited = false,
+  loading = false 
+}) {
+  const { isItemAdded } = React.useContext(appContext);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
-  const { isItemAdded } = React.useContext(appContext)
 
   const onClickPlus = () => {
     onAddToCard({ id, title, imageUrl, price });
@@ -23,9 +24,6 @@ function Card({
     onFavorite({ id, title, imageUrl, price });
     setIsFavorite(!isFavorite)
   }
-
-  React.useEffect(() => {
-  }, [isItemAdded])
 
   return (
     <>
@@ -54,8 +52,14 @@ function Card({
               <span className={cardStyles.card__text}>Цена:</span>
               <strong className={cardStyles.card__price}>{price} руб.</strong>
             </div>
-            <button className={cardStyles.card__button} type="button" onClick={onClickPlus}>
-              <img width={32} height={32} src={isItemAdded(id) ? '/img/btn__check.svg' : '/img/plus.svg'} />
+            <button
+              className={cardStyles.card__button}
+              type="button"
+              onClick={onClickPlus}>
+              <img width={32} height={32} 
+              src={isItemAdded(id) ? '/img/btn__check.svg' : '/img/plus.svg'}
+              alt="plus" 
+              />
             </button>
           </div>
         </li>
