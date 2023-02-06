@@ -1,7 +1,10 @@
 import headerStyles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import React from "react";
+import { useCart } from "../hooks/useCart";
 
 function Header(props) {
+    const { totalPrice } = useCart();
     return (
         <header className={headerStyles.header}>
             <div className={headerStyles.header__box}>
@@ -20,7 +23,7 @@ function Header(props) {
                 <li onClick={props.onClickCart} className={headerStyles.header__item}>
                     <button className="header__button" type="button">
                         <img width={18} height={17} src="/img/cart.svg" />
-                        <span className={headerStyles.header__price}>1205 руб.</span>
+                        <span className={headerStyles.header__price}>{totalPrice} руб.</span>
                     </button>
                 </li>
 
@@ -33,9 +36,11 @@ function Header(props) {
                 </li>
 
                 <li className={headerStyles.header__item}>
-                    <button className="header__button" type="button">
-                        <img width={18} height={17} src="/img/login.svg" />
-                    </button>
+                    <Link to="/orders">
+                        <button className="header__button" type="button">
+                            <img width={18} height={17} src="/img/login.svg" />
+                        </button>
+                    </Link>
                 </li>
 
             </ul>

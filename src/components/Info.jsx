@@ -1,8 +1,8 @@
 import React from "react";
-import appContext from "./contex";
+import AppContext from "./contex";
 
 const Info = ({ title, image, description }) => {
-    const { setCartOpened } = React.useContext(appContext)
+    const { setCartOpened } = React.useContext(AppContext)
     return (
         <ul className="cart-empty">
             <li className="cart-empty__items">

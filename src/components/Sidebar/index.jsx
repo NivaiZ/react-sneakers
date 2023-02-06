@@ -1,24 +1,24 @@
 import React from "react";
-import Info from "./Info";
-import appContext from "./contex";
+import Info from "../Info";
 import axios from "axios";
+import { useCart } from "../hooks/useCart";
+import styles from "./Sidebar.module.scss";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function Sidebar({ onClose, opened, onRemove, items = [] }) {
 
-function Sidebar({ onClose, onRemove, items = [] }) {
-    const { cartItems, setCartItems } = React.useContext(appContext);
-    const [isOrderComplete, setIsOrderComplete] = React.useState(false);
     const [orderId, setOrderId] = React.useState(null);
+    const [isOrderComplete, setIsOrderComplete] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
+    const { cartItems, setCartItems, totalPrice } = useCart();
 
     const onClickOrder = async () => {
         try {
             setIsLoading(true);
             const { data } = await axios.post('https://63c93f94c3e2021b2d52f97e.mockapi.io/orders', {
-                items: cartItems
+                items: cartItems,
             });
-
             setOrderId(data.id);
             setIsOrderComplete(true);
             setCartItems([]);
@@ -27,36 +27,35 @@ function Sidebar({ onClose, onRemove, items = [] }) {
                 const item = cartItems[i];
                 await axios.delete('https://63c93f94c3e2021b2d52f97e.mockapi.io/cart' + item.id);
                 await delay(1000);
-
             }
-
         } catch (error) {
-            alert('Не удалось создать заказ')
+            alert('Ошибка при создании заказа :(');
         }
         setIsLoading(false);
-    }
+    };
+
 
     return (
-        <aside className="overlay">
+        <aside className={`${styles.overlay} ${opened ? styles.overlay__visible : ''}`}>
 
-            <div className="sidebar">
-                <h2 className="sidebar__heading">Корзина
-                    <button onClick={onClose} className="sidebar__button" type="button">
+            <div className={styles.sidebar}>
+                <h2 className={styles.sidebar__heading}>Корзина
+                    <button onClick={onClose} className={styles.sidebar__button} type="button">
                         <img src="/img/btn__remove.svg" />
                     </button>
                 </h2>
 
                 {items.length > 0 ? (
-                    <ul className="sidebar__list sidebar__list--stretching">
+                    <ul className={styles.sidebar__list}>
 
                         {items.map((obj) => (
-                            <li key={obj.id} className="sidebar__item">
-                                <img className="sidebar__picture" width={70} height={70} src={`${obj.imageUrl}`} />
+                            <li key={obj.id} className={styles.sidebar__item}>
+                                <img className={styles.sidebar__picture} width={70} height={70} src={`${obj.imageUrl}`} />
                                 <div className="sidebar__box">
-                                    <p className="sidebar__description">{obj.title}</p>
-                                    <strong className="sidebar__price">{obj.price} руб.</strong>
+                                    <p className={styles.sidebar__description}>{obj.title}</p>
+                                    <strong className={styles.sidebar__price}>{obj.price} руб.</strong>
                                 </div>
-                                <button onClick={() => onRemove(obj.id)} className="sidebar__button" type="button">
+                                <button onClick={() => onRemove(obj.id)} className={styles.sidebar__button} type="button">
                                     <img src="/img/btn__remove.svg" />
                                 </button>
                             </li>
@@ -66,13 +65,13 @@ function Sidebar({ onClose, onRemove, items = [] }) {
                             <li className="total__item">
                                 <span className="total__text">Итого:</span>
                                 <span className="total__dotter"></span>
-                                <strong className="total__price">21 498 руб. </strong>
+                                <strong className="total__price">{totalPrice} руб. </strong>
                             </li>
 
                             <li className="total__item">
-                                <span className="total__text">Налог 5%:</span>
+                                <span className="total__text">Налог 20%:</span>
                                 <span className="total__dotter"></span>
-                                <strong className="total__price">1074 руб.</strong>
+                                <strong className="total__price">{(totalPrice / 100) * 20} руб.</strong>
                             </li>
 
                             <li className="total__item">

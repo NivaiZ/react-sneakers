@@ -1,30 +1,31 @@
 import cardStyles from "./Card.module.scss";
 import React from "react";
 import ContentLoader from "react-content-loader";
-import appContext from "../contex";
+import AppContext from "../contex";
 
 function Card({
   id,
-  onAddToCard,
-  onFavorite,
-  imageUrl,
+  parentId,
   title,
+  imageUrl,
   price,
+  onFavorite,
+  onPlus,
   favorited = false,
-  loading = false 
+  loading = false,
 }) {
-  const { isItemAdded } = React.useContext(appContext);
+  const { isItemAdded } = React.useContext(AppContext);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
+  const itemObj = { id, parentId: id, title, imageUrl, price };
 
   const onClickPlus = () => {
-    onAddToCard({ id, title, imageUrl, price });
-  }
+    onPlus(itemObj);
+  };
 
   const onClickFavorite = () => {
-    onFavorite({ id, title, imageUrl, price });
-    setIsFavorite(!isFavorite)
-  }
-
+    onFavorite(itemObj);
+    setIsFavorite(!isFavorite);
+  };
   return (
     <>
       {loading ?
@@ -42,9 +43,11 @@ function Card({
           <rect x="124" y="230" rx="10" ry="10" width="32" height="32" />
         </ContentLoader> :
         <li className={cardStyles.card__item}>
-          <button className={cardStyles.card__block} type="button" onClick={onClickFavorite}>
+
+          {onFavorite && <button className={cardStyles.card__block} type="button" onClick={onClickFavorite}>
             <img src={isFavorite ? '/img/favorite__active.svg' : '/img/favorite__disabled.svg'} />
-          </button>
+          </button>}
+
           <img width={133} height={112} src={imageUrl} />
           <p className={cardStyles.card__description}>{title}</p>
           <div className={cardStyles.card__inner}>
@@ -52,15 +55,16 @@ function Card({
               <span className={cardStyles.card__text}>Цена:</span>
               <strong className={cardStyles.card__price}>{price} руб.</strong>
             </div>
-            <button
+            {onPlus && <button
               className={cardStyles.card__button}
               type="button"
-              onClick={onClickPlus}>
-              <img width={32} height={32} 
-              src={isItemAdded(id) ? '/img/btn__check.svg' : '/img/plus.svg'}
-              alt="plus" 
+              onClick={onClickPlus}
+            >
+              <img width={32} height={32}
+                src={isItemAdded(id) ? '/img/btn__check.svg' : '/img/plus.svg'}
+                alt="plus"
               />
-            </button>
+            </button>}
           </div>
         </li>
       }
