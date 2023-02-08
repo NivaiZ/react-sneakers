@@ -33,6 +33,7 @@ function App() {
     fetchData();
   }, []);
 
+
   const onAddToCart = async (obj) => {
     try {
       const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id));
@@ -57,11 +58,9 @@ function App() {
       alert('Не получилось добавить товар в корзину');
       console.error(error);
     }
-
-
-
   };
 
+  
   const onRemoveItem = (id) => {
     try {
       axios.delete(`https://63c7fee35c0760f69ac2d96a.mockapi.io/cart/${id}`);

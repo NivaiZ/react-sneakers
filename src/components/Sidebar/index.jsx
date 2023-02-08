@@ -8,10 +8,10 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function Sidebar({ onClose, opened, onRemove, items = [] }) {
 
+    const { cartItems, setCartItems, totalPrice } = useCart();
     const [orderId, setOrderId] = React.useState(null);
     const [isOrderComplete, setIsOrderComplete] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
-    const { cartItems, setCartItems, totalPrice } = useCart();
 
     const onClickOrder = async () => {
         try {
@@ -25,11 +25,11 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
 
             for (let i = 0; i < cartItems.length; i++) {
                 const item = cartItems[i];
-                await axios.delete('https://63c93f94c3e2021b2d52f97e.mockapi.io/cart' + item.id);
+                await axios.delete('https://63c93f94c3e2021b2d52f97e.mockapi.io/cart/' + item.id);
                 await delay(1000);
             }
         } catch (error) {
-            alert('Ошибка при создании заказа :(');
+            console.warn(error)
         }
         setIsLoading(false);
     };
@@ -69,9 +69,9 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
                             </li>
 
                             <li className="total__item">
-                                <span className="total__text">Налог 20%:</span>
+                                <span className="total__text">Налог 18%:</span>
                                 <span className="total__dotter"></span>
-                                <strong className="total__price">{(totalPrice / 100) * 20} руб.</strong>
+                                <strong className="total__price">{(totalPrice / 100) * 18} руб.</strong>
                             </li>
 
                             <li className="total__item">
