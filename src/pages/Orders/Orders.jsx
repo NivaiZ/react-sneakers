@@ -47,7 +47,7 @@ function Orders() {
                         <p className={styles.inner__text}>
                             Скорее оформляйте заказы <br />по приятным ценам
                         </p>
-                        <Link to=''>
+                        <Link to='/'>
                             <button type='button' className='button-order'>
                                 Вернуться назад
                                 <img width="13" height="12" alt="arrow" src="img/arrowleft.svg" />
