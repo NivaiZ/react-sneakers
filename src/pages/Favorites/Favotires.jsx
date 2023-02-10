@@ -32,7 +32,7 @@ function Favorites() {
                         <Link to='/'>
                             <button type='button' className='button-order'>
                                 Вернуться назад
-                                <img width="13" height="12" alt="arrow" src="/img/arrowleft.svg" />
+                                <img width="13" height="12" alt="arrow" src="img/arrowleft.svg" />
 
                             </button>
                         </Link>

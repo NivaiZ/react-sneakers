@@ -16,7 +16,7 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
     const onClickOrder = async () => {
         try {
             setIsLoading(true);
-            const { data } = await axios.post('https://63c93f94c3e2021b2d52f97e.mockapi.io/orders', {items: cartItems});
+            const { data } = await axios.post('https://63c93f94c3e2021b2d52f97e.mockapi.io/orders', { items: cartItems });
             setOrderId(data.id);
             setIsOrderComplete(true);
             setCartItems([]);
@@ -40,7 +40,7 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
             <div className={styles.sidebar} onClick={e => e.stopPropagation()}>
                 <h2 className={styles.sidebar__heading}>Корзина
                     <button onClick={onClose} className={styles.sidebar__button} type="button">
-                        <img src="/img/btn__remove.svg" />
+                        <img src="img/btn__remove.svg" alt="remove" />
                     </button>
                 </h2>
 
@@ -49,13 +49,13 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
 
                         {items.map((obj) => (
                             <li key={obj.id} className={styles.sidebar__item}>
-                                <img className={styles.sidebar__picture} width={70} height={70} src={`${obj.imageUrl}`} />
+                                <img className={styles.sidebar__picture} width={70} height={70} src={`${obj.imageUrl}`} alt="product" />
                                 <div className="sidebar__box">
                                     <p className={styles.sidebar__description}>{obj.title}</p>
                                     <strong className={styles.sidebar__price}>{obj.price} руб.</strong>
                                 </div>
                                 <button onClick={() => onRemove(obj.id)} className={styles.sidebar__button} type="button">
-                                    <img src="/img/btn__remove.svg" />
+                                    <img src="img/btn__remove.svg" alt="remove" />
                                 </button>
                             </li>
                         ))}

@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 150px;
     align-items: center;
+
     @media (max-width:767px) {
         padding: 50px;
     }
@@ -28,7 +29,6 @@
         width: 245px;
         flex-direction: row-reverse;
         margin: 10px 0 10px 0;
-
     }
 
     img {

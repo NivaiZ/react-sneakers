@@ -10,7 +10,7 @@ function Header(props) {
             <div className={headerStyles.header__box}>
                 <Link to="/">
                     <div className={headerStyles.header__logo}>
-                        <img width={40} height={40} src="/img/logo.png" />
+                        <img width={40} height={40} src="img/logo.png" alt="logo"/>
                     </div>
                 </Link>
                 <div className={headerStyles.header__block}>
@@ -22,7 +22,7 @@ function Header(props) {
             <ul className={headerStyles.header__list}>
                 <li onClick={props.onClickCart} className={headerStyles.header__item}>
                     <button className="header__button" type="button">
-                        <img width={18} height={17} src="/img/cart.svg" />
+                        <img width={18} height={17} src="img/cart.svg" alt="logo__cart"/>
                         <span className={headerStyles.header__price}>{totalPrice} руб.</span>
                     </button>
                 </li>
@@ -30,7 +30,7 @@ function Header(props) {
                 <li className={headerStyles.header__item}>
                     <Link to="/favorites">
                         <button className={headerStyles.header__button} type="button">
-                            <img width={18} height={17} src="/img/favorites.svg" />
+                            <img width={18} height={17} src="img/favorites.svg" alt="favorites"/>
                         </button>
                     </Link>
                 </li>
@@ -38,7 +38,7 @@ function Header(props) {
                 <li className={headerStyles.header__item}>
                     <Link to="/orders">
                         <button className="header__button" type="button">
-                            <img width={18} height={17} src="/img/login.svg" />
+                            <img width={18} height={17} src="img/login.svg" alt="login__logo"/>
                         </button>
                     </Link>
                 </li>
