@@ -8,7 +8,7 @@ function Header(props) {
     return (
         <header className={headerStyles.header}>
             <div className={headerStyles.header__box}>
-                <Link to="/">
+                <Link to="">
                     <div className={headerStyles.header__logo}>
                         <img width={40} height={40} src="img/logo.png" alt="logo"/>
                     </div>
@@ -28,7 +28,7 @@ function Header(props) {
                 </li>
 
                 <li className={headerStyles.header__item}>
-                    <Link to="/favorites">
+                    <Link to="favorites">
                         <button className={headerStyles.header__button} type="button">
                             <img width={18} height={17} src="img/favorites.svg" alt="favorites"/>
                         </button>
@@ -36,7 +36,7 @@ function Header(props) {
                 </li>
 
                 <li className={headerStyles.header__item}>
-                    <Link to="/orders">
+                    <Link to="orders">
                         <button className="header__button" type="button">
                             <img width={18} height={17} src="img/login.svg" alt="login__logo"/>
                         </button>
