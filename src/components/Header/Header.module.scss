@@ -20,9 +20,19 @@
   display: flex;
   list-style: none;
   padding-left: 30px;
+  transition: 0.5s ease;
+  transition: 0.5s ease;
 
   &:first-child {
     cursor: pointer;
+  }
+
+  @media (max-width: 791px) {
+    padding-left: 10px;
+  }
+
+  &:hover {
+    opacity: 0.5;
   }
 }
 
@@ -38,11 +48,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 501px) and (max-width:991px) {
+    flex-direction: row;
+  }
 }
 
 .header__list {
   display: flex;
   padding: 0;
+  margin: 10px 0 10px 0;
 }
 
 .header__heading {

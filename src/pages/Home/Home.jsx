@@ -1,6 +1,6 @@
-import Card from "../components/Card";
+import Card from "../../components/Card";
 import React from "react";
-
+import styles from "./Home.module.scss";
 function Home({
     items,
     searchValue,
@@ -27,10 +27,10 @@ function Home({
 
 
     return (
-        <section className="showcase">
-            <div className="showcase__inner">
-                <h1 className="showcase__heading search">{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кроссовки'}</h1>
-                <div className="search__block">
+        <section className={styles.main}>
+            <div className={styles.main__inner}>
+                <h1 className={styles.main__heading}>{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кроссовки'}</h1>
+                <div className={styles.main__search}>
                     {searchValue && <button className="button" type="button" onClick={() => { setSearchValue('') }}>
                         <img src="/img/btn__remove.svg" />
                     </button>}

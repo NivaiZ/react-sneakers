@@ -1,8 +1,8 @@
-import Card from "../components/Card";
+import Card from "../../components/Card";
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import styles from "./Orders.module.scss";
 
 function Orders() {
     const [orders, setOrders] = React.useState([]);
@@ -13,7 +13,7 @@ function Orders() {
             (async () => {
                 const { data } = await axios.get('https://63c93f94c3e2021b2d52f97e.mockapi.io/orders');
                 setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []))
-                setIsLoading(false)
+                setIsLoading(false);
             })()
         } catch (error) {
             alert('Не удалось получить заказы');
@@ -39,26 +39,25 @@ function Orders() {
                         </ul>
                     </>
                 ) : (
-                    <div className='inner__page__empty'>
-                        <img src='img/no__orders.png' alt='upset face' className='inner__page__empty__face' />
-                        <h3>
+                    <div className={styles.inner__page__empty}>
+                        <img width={70} height={70} src='img/no__orders.png' alt='upset face' className='inner__page__empty__face' />
+                        <h3 className={styles.inner__heading}>
                             У вас нет заказов
                         </h3>
-                        <p>
-                            Скорее оформляйте заказы по приятным ценам
+                        <p className={styles.inner__text}>
+                            Скорее оформляйте заказы <br />по приятным ценам
                         </p>
                         <Link to='/'>
                             <button type='button' className='button-order'>
-                                Go back
-                                <img width="13" height="12" src="/img/arrow.svg" />
+                                Вернуться назад
+                                <img width="13" height="12" alt="arrow" src="/img/arrowleft.svg" />
 
                             </button>
                         </Link>
                     </div>
-
                 )
-                }
 
+                }
 
             </article>
 

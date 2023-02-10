@@ -69,6 +69,9 @@
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
+    @media (max-width: 991px) {
+        flex: unset;
+    }
 }
 
 .sidebar__picture {

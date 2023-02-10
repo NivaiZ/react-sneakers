@@ -1,0 +1,31 @@
+.main__heading {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin: 10px 0 10px 0;
+
+    @media (max-width: 991px) {
+        font-size: 26px;
+    }
+}
+
+.main__inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    @media (max-width:550px) {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: unset;
+    }
+}
+
+.main__search {
+    display: flex;
+    border: 1px solid #F3F3F3;
+    border-radius: 10px;
+    padding: 0 15px;
+    position: relative;
+}

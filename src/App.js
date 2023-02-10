@@ -3,10 +3,10 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Home from "./pages/Home";
-import Favorites from "./pages/Favotires";
+import Home from "./pages/Home/Home";
+import Favorites from "./pages/Favorites/Favotires";
 import AppContext from "./components/contex";
-import Orders from "./pages/Orders";
+import Orders from "./pages/Orders/Orders";
 
 function App() {
   const [items, setItems] = React.useState([]);
