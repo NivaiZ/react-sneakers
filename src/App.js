@@ -19,7 +19,10 @@ function App() {
   React.useEffect(() => {
     async function fetchData() {
       try {
-        const [cartResponse, favoritesResponse, itemsResponse] = await Promise.all([axios.get('https://63c7fee35c0760f69ac2d96a.mockapi.io/cart'), axios.get('https://63c93f94c3e2021b2d52f97e.mockapi.io/favorites'), axios.get('https://63c7fee35c0760f69ac2d96a.mockapi.io/items')])
+        const [cartResponse, favoritesResponse, itemsResponse] = await Promise.all([
+          axios.get('https://63c7fee35c0760f69ac2d96a.mockapi.io/cart'),
+          axios.get('https://63c93f94c3e2021b2d52f97e.mockapi.io/favorites'),
+          axios.get('https://63c7fee35c0760f69ac2d96a.mockapi.io/items')])
 
         setIsLoading(false);
         setCartItems(cartResponse.data);
@@ -40,10 +43,11 @@ function App() {
       if (findItem) {
         setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)));
         await axios.delete(`https://63c7fee35c0760f69ac2d96a.mockapi.io/cart/${findItem.id}`);
+        
       } else {
         setCartItems((prev) => [...prev, obj]);
         const { data } = await axios.post('https://63c7fee35c0760f69ac2d96a.mockapi.io/cart', obj);
-        setCartItems((prev) => prev.map(item => {
+        setCartItems((prev) => prev.map((item) => {
           if (item.parentId === data.parentId) {
             return {
               ...item,
@@ -60,7 +64,7 @@ function App() {
     }
   };
 
-  
+
   const onRemoveItem = (id) => {
     try {
       axios.delete(`https://63c7fee35c0760f69ac2d96a.mockapi.io/cart/${id}`);

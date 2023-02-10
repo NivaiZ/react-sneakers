@@ -21,18 +21,18 @@ function Favorites() {
                     </>
                 ) : (
                     <div className='inner__page__empty'>
-                        <img src='img/page__empty__face.png' alt='upset face' className='inner__page__empty__face' />
+                        <img width={300} height={100} src='img/page__empty__face.png' alt='upset face' className='inner__page__empty__face' />
                         <h3>
-                            Закладок нет:(
+                            Закладок нет
                         </h3>
                         <p>
-                        Вы ничего не добавляли в закладки
+                            Вы ничего не добавляли в закладки
                         </p>
                         <Link to='/'>
                             <button type='button' className='button-order'>
                                 Go back
-                                <img width="13" height="12" src="/img/arrow.svg"/>
-                                
+                                <img width="13" height="12" src="/img/arrow.svg" />
+
                             </button>
                         </Link>
                     </div>

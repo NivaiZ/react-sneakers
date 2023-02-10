@@ -16,29 +16,28 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
     const onClickOrder = async () => {
         try {
             setIsLoading(true);
-            const { data } = await axios.post('https://63c93f94c3e2021b2d52f97e.mockapi.io/orders', {
-                items: cartItems,
-            });
+            const { data } = await axios.post('https://63c93f94c3e2021b2d52f97e.mockapi.io/orders', {items: cartItems});
             setOrderId(data.id);
             setIsOrderComplete(true);
             setCartItems([]);
 
             for (let i = 0; i < cartItems.length; i++) {
                 const item = cartItems[i];
-                await axios.delete('https://63c93f94c3e2021b2d52f97e.mockapi.io/cart/' + item.id);
+                console.log(item);
+                await axios.delete('https://63c7fee35c0760f69ac2d96a.mockapi.io/cart/' + item.id);
                 await delay(1000);
             }
         } catch (error) {
-            console.warn(error)
+            console.warn(error);
+            alert('не удалось отправить заказ');
         }
         setIsLoading(false);
     };
 
-
     return (
-        <aside className={`${styles.overlay} ${opened ? styles.overlay__visible : ''}`}>
+        <aside className={`${styles.overlay} ${opened ? styles.overlay__visible : ''}`} onClick={() => onClose(false)}>
 
-            <div className={styles.sidebar}>
+            <div className={styles.sidebar} onClick={e => e.stopPropagation()}>
                 <h2 className={styles.sidebar__heading}>Корзина
                     <button onClick={onClose} className={styles.sidebar__button} type="button">
                         <img src="/img/btn__remove.svg" />
