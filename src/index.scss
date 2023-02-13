@@ -215,3 +215,31 @@ body {
 a {
   text-decoration: none;
 }
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+  content: url("https://thumb.cloud.mail.ru/weblink/thumb/xw1/WAtk/NFAxcuo89") !important;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  content: url("https://thumb.cloud.mail.ru/weblink/thumb/xw1/WAtk/NFAxcuo89") !important;
+  rotate: -180deg;
+}
+
+.swiper-slide {
+  img {
+    width: 100%;
+    height: 300px;
+    display: block;
+  }
+}
+
+.slide__1 {
+  background-color: #F4EFE9;
+  border-radius: 20px;
+}
+
+.swiper.swiper-initialized.swiper-horizontal.swiper-backface-hidden.mySwiper {
+  margin-top: 95px;
+}

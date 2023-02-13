@@ -40,7 +40,7 @@ function Orders() {
                     </>
                 ) : (
                     <div className={styles.inner__page__empty}>
-                        <img width={70} height={70} src='img/no__orders.png' alt='upset face' className='inner__page__empty__face' />
+                        <img width={70} height={70} src='/img/no__orders.png' alt='upset face' className='inner__page__empty__face' />
                         <h3 className={styles.inner__heading}>
                             У вас нет заказов
                         </h3>
@@ -50,7 +50,7 @@ function Orders() {
                         <Link to='/'>
                             <button type='button' className='button-order'>
                                 Вернуться назад
-                                <img width="13" height="12" alt="arrow" src="img/arrowleft.svg" />
+                                <img width="13" height="12" alt="arrow" src="/img/arrowleft.svg" />
 
                             </button>
                         </Link>

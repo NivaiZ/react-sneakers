@@ -1,0 +1,31 @@
+.slider__list {
+    padding: 0 0 0 0;
+    position: absolute;
+    top: 0;
+    margin-left: 61px;
+}
+
+.slider__item {
+    list-style: none;
+
+    a {
+        width: 175px;
+    }
+}
+
+.slider__text {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 46px;
+    @media (max-width: 991px) {
+        font-size: 20px;
+    }
+}
+
+.slider__text__green {
+    color: #8BB43C;
+}
+
+.slider__item .slider__logo {
+    margin-left: unset;
+}

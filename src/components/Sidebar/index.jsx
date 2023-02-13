@@ -40,7 +40,7 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
             <div className={styles.sidebar} onClick={e => e.stopPropagation()}>
                 <h2 className={styles.sidebar__heading}>Корзина
                     <button onClick={onClose} className={styles.sidebar__button} type="button">
-                        <img src="img/btn__remove.svg" alt="remove" />
+                        <img src="/img/btn__remove.svg" alt="remove" />
                     </button>
                 </h2>
 
@@ -55,7 +55,7 @@ function Sidebar({ onClose, opened, onRemove, items = [] }) {
                                     <strong className={styles.sidebar__price}>{obj.price} руб.</strong>
                                 </div>
                                 <button onClick={() => onRemove(obj.id)} className={styles.sidebar__button} type="button">
-                                    <img src="img/btn__remove.svg" alt="remove" />
+                                    <img src="/img/btn__remove.svg" alt="remove" />
                                 </button>
                             </li>
                         ))}
