@@ -23,7 +23,8 @@
   <li>Axios</li>
   <li>Sccs</li>
   <li>Mock API</li>
-  <li>Figma</li>
+  <li>Swiper</li>
+
 </ul>
 
 ## Как использовать данный проект
