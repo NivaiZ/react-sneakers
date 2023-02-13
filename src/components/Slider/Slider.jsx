@@ -29,7 +29,12 @@ export default function Slider() {
                         </li>
                     </ul>
                 </SwiperSlide>
-                <SwiperSlide className="slide__1"><img src="./img/slider1.png" alt="slider__1" />
+                
+                <SwiperSlide className="slide__2"><img src="./img/slider1.png" alt="slider__1" />
+                    <picture>
+                        <source srcSet="./img/slider1.png" media="(min-width: 1000px)" />
+                        <img src="./img/slider__1.png" alt="slider-1" />
+                    </picture>
                     <ul className={styles.slider__list}>
 
                         <li className={styles.slider__item}>
@@ -45,7 +50,12 @@ export default function Slider() {
                         </li>
                     </ul>
                 </SwiperSlide>
-                <SwiperSlide className="slide__1"><img src="./img/slider1.png" alt="slider__1" />
+
+                <SwiperSlide className="slide__3"><img src="./img/slider1.png" alt="slider__1" />
+                    <picture>
+                        <source srcSet="./img/slider1.png" media="(min-width: 1000px)" />
+                        <img src="./img/slider__1.png" alt="slider-1" />
+                    </picture>
                     <ul className={styles.slider__list}>
 
                         <li className={styles.slider__item}>
@@ -54,7 +64,6 @@ export default function Slider() {
                                 <br />Forever!
                             </p>
                         </li>
-
                         <li className={styles.slider__item}>
                             <a className="button-order" href="#">
                                 Купить
