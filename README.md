@@ -1,4 +1,4 @@
-### <a href="https://nivaiz.github.io/react-sneakers/">Ссылка на проект</a>
+### <a href="https://react-sneakers-five-beta.vercel.app/">Ссылка на проект</a>
 
 # React Sneakers
 Данный магазин имеет такие особенности как: <br/>
