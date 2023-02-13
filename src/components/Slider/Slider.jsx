@@ -30,7 +30,7 @@ export default function Slider() {
                     </ul>
                 </SwiperSlide>
                 
-                <SwiperSlide className="slide__2"><img src="./img/slider1.png" alt="slider__1" />
+                <SwiperSlide className="slide__2">
                     <picture>
                         <source srcSet="./img/slider1.png" media="(min-width: 1000px)" />
                         <img src="./img/slider__1.png" alt="slider-1" />
@@ -51,7 +51,7 @@ export default function Slider() {
                     </ul>
                 </SwiperSlide>
 
-                <SwiperSlide className="slide__3"><img src="./img/slider1.png" alt="slider__1" />
+                <SwiperSlide className="slide__3">
                     <picture>
                         <source srcSet="./img/slider1.png" media="(min-width: 1000px)" />
                         <img src="./img/slider__1.png" alt="slider-1" />
